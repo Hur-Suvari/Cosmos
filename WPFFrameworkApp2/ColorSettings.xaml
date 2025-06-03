@@ -1,0 +1,49 @@
+﻿<Window x:Class="WPFFrameworkApp.ColorSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFFrameworkApp"
+        mc:Ignorable="d" Background="Gray" Icon="SystemSources/DesktopImages/Settings.png" ResizeMode="NoResize"
+        Title="Color Settings" Height="300" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Menu x:Name="colorMenu" Grid.Row="0" Grid.ColumnSpan="2" Background="DarkGray">
+            <MenuItem Header="Result" Height="20">
+                <MenuItem x:Name="CItem1" Header="Apply Changes" BorderThickness="0" Click="ApplyChanges_Clicked">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/NoteImages/Save.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="CItem2" Header="Quit without saving" BorderThickness="0" Click="CancelChanges_Clicked">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/Quit.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="CItem3" Header="Restore default settings" BorderThickness="0" Click="RestoreDefaults_Wanted">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/restore.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Button Content="Main Desktop Color" Grid.Row="1" Grid.Column="0" Margin="30, 10, 30, 10" Foreground="White" Background="DimGray" BorderThickness="0" Click="MainDesktopColorChange_Clicked"/>
+        <Button Content="Folder Desktop Color" Grid.Row="2" Grid.Column="0" Margin="30, 10, 30, 10" Foreground="White" Background="DimGray" BorderThickness="0" Click="FolderDesktopColorChange_Clicked"/>
+        <Button Content="Taskbar Color" Grid.Row="3" Grid.Column="0" Margin="30, 10, 30, 10" Foreground="White" Background="DimGray" BorderThickness="0" Click="SafariColorChange_Clicked"/>
+        <Button Content="Menubar Color" Grid.Row="4" Grid.Column="0" Margin="30, 10, 30, 10" Foreground="White" Background="DimGray" BorderThickness="0" Click="MenuColorChange_Clicked"/>
+        <TextBlock x:Name="mainDesktopColor" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+        <TextBlock x:Name="folderDesktopColor" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+        <TextBlock x:Name="safariColor" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+        <TextBlock x:Name="menuColor" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+    </Grid>
+</Window>

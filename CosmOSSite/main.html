@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CosmOS File Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="top-bar">
+    <div>
+    </div>
+    <div class="right-profile">
+      <span id="email" class="email">admin@info.com</span>
+      <div class="profile-container" id="profileToggle">
+        <img src="https://cdn-icons-png.flaticon.com/512/706/706830.png" alt="Avatar" class="avatar" />
+        <div class="dropdown-panel" id="profilePanel">
+          <div class="profile-info">
+            <img src="https://cdn-icons-png.flaticon.com/512/706/706830.png" class="avatar" alt="avatar"/>
+            <div>
+              <strong id="profileName">Seyyit Baltacıoğlu</strong><br />
+              <span class="role">Administrator</span>
+            </div>
+          </div>
+          <div class="storage" id="storageinfo">0000B / 1TB</div>
+          <ul class="menu">
+            <li><a href="account_settings.php">⚙️ Account Settings</a></li>
+            <li><a href="#" id="signout" class="signout">🚪 Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="SystemSources/logo.png" alt="Logo" />
+        <span>CosmOS</span>
+      </div>
+
+      <nav class="menu">
+        <button class="menu-item active" data-section="dashboard">
+          <span class="icon">🏠</span> Dashboard
+        </button>
+        <button class="menu-item" data-section="filestats">
+          <span class="icon">📊</span> File Stats
+        </button>
+        <button class="menu-item" data-section="upload">
+          <span class="icon">⬆️</span> Upload
+        </button>
+        <button class="menu-item" data-section="myfiles" id="myFilesBtn">
+          <span class="icon">📄</span> My Files
+        </button>
+        <button class="menu-item" data-section="folders" id="myFoldersBtn">
+          <span class="icon">📂</span> Folders
+        </button>
+        <button class="menu-item" data-section="recentlyadded">
+          <span class="icon">🕒</span> Recently Added
+        </button>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header>
+        <div class="top-right">
+          <button id="refresh">Refresh</button>
+          <button class="btn" id="chooseFolderBtn">Choose Folder</button>
+          <button class="btn" id="createFolder">Create Folder</button>
+          <button class="btn" id="uploadFile">Upload File</button>
+      </header>
+
+      <section class="dashboard" id="dashboard">
+        <h2>Dashboard</h2>
+        <p id="basetitle">Please choose a folder in order to work on it</p>
+        <div class="stats-cards">
+          <div class="card pink">
+            <div class="file-icon">TEXT</div>
+            <p>DOCUMENTS</p>
+            <h3 id="textfiles">0000</h3>
+            <span class="tag">0+</span>
+            <div class="progress pink"></div>
+          </div>
+          <div class="card blue">
+            <div class="file-icon">SOUNDS</div>
+            <p>MUSICS</p>
+            <h3 id="musicfiles">0000</h3>
+            <span class="tag">0+</span>
+            <div class="progress blue"></div>
+          </div>
+          <div class="card green">
+            <div class="file-icon">IMG</div>
+            <p>PHOTOS</p>
+            <h3 id="photofiles">0000</h3>
+            <span class="tag">0+</span>
+            <div class="progress green"></div>
+          </div>
+          <div class="card orange">
+            <div class="file-icon">MOV</div>
+            <p>VIDEOS</p>
+            <h3 id="videofiles">0000</h3>
+            <span class="tag">0+</span>
+            <div class="progress orange"></div>
+          </div>
+          <div class="card purple">
+            <div class="file-icon">EXE</div>
+            <p>PROGRAMS</p>
+            <h3 id="exefiles">0000</h3>
+            <span class="tag">0+</span>
+            <div class="progress purple"></div>
+          </div>
+          <div class="card yellow">
+            <div class="file-icon">DIR</div>
+            <p>FOLDERS</p>
+            <h3 id="folderfiles">0000</h3>
+            <span class="tag">80+</span>
+            <div class="progress yellow"></div>
+          </div>
+        </div>
+
+        <div class="info-cards">
+          <div class="info-card blue-light">
+            <p>Storage Usage</p>
+            <h3 id="totalsize">0000GB</h3>
+            <span class="sub-text">+33GB this week</span>
+          </div>
+          <div class="info-card green-light">
+            <p>Shared Files</p>
+            <h3>0</h3>
+            <span class="sub-text">+24% this week</span>
+          </div>
+          <div class="info-card orange-light">
+            <p>Recent Activities</p>
+            <h3>0</h3>
+            <span class="sub-text">12 new updates</span>
+          </div>
+          <div class="info-card pink-light">
+            <p>Storage Alerts</p>
+            <h3>0</h3>
+            <span class="sub-text critical">2 critical alerts</span>
+          </div>
+        </div>
+
+        <div class="quick-access">
+          <h3>Quick Access</h3>
+          <div class="quick-items">
+            <div class="quick-item blue-light">
+              <span>🖼️</span>
+              <p>Images</p>
+              <small id="smallphotofiles">0000 files</small>
+            </div>
+            <div class="quick-item pink-light">
+              <span>📄</span>
+              <p>Documents</p>
+              <small id="smalltextfiles">0000 files</small>
+            </div>
+            <div class="quick-item orange-light">
+              <span>▶️</span>
+              <p>Videos</p>
+              <small id="smallvideofiles">0000 files</small>
+            </div>
+            <div class="quick-item green-light">
+              <span>🎵</span>
+              <p>Audio</p>
+              <small id="smallmusicfiles">0000 files</small>
+            </div>
+            <div class="quick-item blue-light">
+              <span>📦</span>
+              <p>Archives</p>
+              <small>0000 files</small>
+            </div>
+            <div class="quick-item gray-light">
+              <span>📚</span>
+              <p>Others</p>
+              <small id="smallothers">0000 files</small>
+      </section>
+
+      <section id="filestats" class="page-section" style="display:none;">
+        <h2>File Stats</h2>
+        <div class="stats-cards">
+          <div class="card pink">
+            <div class="file-icon">TXT</div>
+            <p>Total Text Files</p>
+            <h3 id="totaltextfiles">0000</h3>
+            <span class="tag">+30</span>
+            <div class="progress pink"></div>
+          </div>
+          <div class="card blue">
+            <div class="file-icon">RTF</div>
+            <p>Total RTF Docs</p>
+            <h3 id="totalRTFfiles">0000</h3>
+            <span class="tag">+12</span>
+            <div class="progress blue"></div>
+          </div>
+          <div class="card yellow">
+            <div class="file-icon">WAV</div>
+            <p>Total WAV Files</p>
+            <h3 id="totalwavfiles">0000</h3>
+            <span class="tag">+18</span>
+            <div class="progress green"></div>
+          </div>
+          <div class="card green">
+            <div class="file-icon">MP3</div>
+            <p>Total MP3 Files</p>
+            <h3 id="totalmp3files">0000</h3>
+            <span class="tag">+18</span>
+            <div class="progress green"></div>
+          </div>
+          <div class="card orange">
+            <div class="file-icon">MP4</div>
+            <p>Total Videos</p>
+            <h3 id="totalvideofiles">0000</h3>
+            <span class="tag">+7</span>
+            <div class="progress orange"></div>
+          </div>
+          <div class="card purple">
+            <div class="file-icon">PHOTO</div>
+            <p>Total Image Files</p>
+            <h3 id="totaljpgandpngfiles">0000</h3>
+            <span class="tag">+7</span>
+            <div class="progress orange"></div>
+          </div>
+          <div class="card black">
+            <div class="file-icon">PROGRAM</div>
+            <p>Total EXE Files</p>
+            <h3 id="totalexefiles">0000</h3>
+            <span class="tag">+7</span>
+            <div class="progress orange"></div>
+          </div>
+        </div>
+        <div class="info-cards">
+          <div class="info-card blue-light">
+            <p>Downloaded Files</p>
+            <h3>0KB</h3>
+            <span class="sub-text">+150 this week</span>
+          </div>
+          <div class="info-card green-light">
+            <p>Uploaded Files</p>
+            <h3>0KB</h3>
+            <span class="sub-text">+45 this week</span>
+          </div>
+          <div class="info-card orange-light">
+            <p>Shared Files</p>
+            <h3>0</h3>
+            <span class="sub-text">+10%</span>
+          </div>
+          <div class="info-card pink-light">
+            <p>Deleted Files</p>
+            <h3>0</h3>
+            <span class="sub-text critical">-5%</span>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="upload" class="page-section" style="display:none;">
+        <h2>Upload Files</h2>
+        <div class="upload-box">
+          <label for="uploadInput" class="upload-area">
+            <span class="upload-icon">📤</span>
+            <p>Click or drag files here to upload</p>
+            <input type="file" id="uploadInput" multiple style="display: none;" />
+          </label>
+          <ul id="fileList" class="file-list">
+          </ul>
+          <button id="uploadBtn" class="btn upload-btn">Upload</button>
+        </div>
+      </section>
+
+
+      <section id="myfiles" class="page-section" style="display:none;">
+        <h2>My Files</h2>
+        <div class="file-grid" id="fileContainer">
+          <!--C_DESKTOP Files-->
+
+        </div>
+      </section>
+
+      <section id="folders" class="page-section" style="display:none;">
+        <h2>Folders</h2>
+        <div class="file-grid" id="folderContainer">
+          <!--C_DESKTOP folders-->
+
+        </div>
+      </section>
+
+      <section id="recentlyadded" class="page-section" style="display:none;">
+        <h2>Recently Added</h2>
+        <div class="recent-section">
+          <h3 class="recent-title">Last 20 Files</h3>
+          <div class="recent-grid" id="recentContainer">
+            <!-- Dinamik olarak JavaScript ile doldurulacak -->
+          </div>
+        </div>
+      </section>
+    </main>
+</body>
+
+</html>

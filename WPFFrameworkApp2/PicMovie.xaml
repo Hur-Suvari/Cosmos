@@ -1,0 +1,55 @@
+﻿<Window x:Class="WPFFrameworkApp.PicMovie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFFrameworkApp" 
+        mc:Ignorable="d" Background="#182157" Icon="SystemSources/DesktopImages/picmovie.png"
+        Title="PicMovie" Height="450" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Menu x:Name="picVideoMenu" Grid.Row="0">
+            <MenuItem x:Name="PVItem1" Header="_PicVideo File" Height="20">
+                <MenuItem x:Name="PVItem2" Header="´_Add PicVideo" BorderThickness="0" Click="AddPicVideo_Wanted">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/addpicture.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="PVItem3" Header="_Move PicVideo" BorderThickness="0" Click="MovePicVideo_Wanted">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/NoteImages/move.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="PVItem4" Header="_Copy PicVideo" BorderThickness="0" Click="CopyPicVideo_Wanted">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/copypict.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="PVItem5" Header="_Delete PicVideo" BorderThickness="0" Click="DeletePicVideo_Wanted">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/delpicture.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="PVItem6" Header="_Reload PicMovie" BorderThickness="0" Click="ReloadWindow_Wanted" >
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/refresh.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem x:Name="PVItem7" Click="AboutPage_Wanted">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/picmovie.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <WrapPanel x:Name="picMovieDesktop" />
+        </ScrollViewer>
+    </Grid>
+</Window>

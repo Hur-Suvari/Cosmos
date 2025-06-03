@@ -1,0 +1,35 @@
+﻿<Window x:Class="WPFFrameworkApp.TrashBacket"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFFrameworkApp"
+        mc:Ignorable="d" Icon="SystemSources/DesktopImages/trashfull.png"
+        Title="TrashBacket" Height="400" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" x:Name="fileMenu">
+            <MenuItem Header="_Trash" Height="20">
+                <MenuItem x:Name="TItem1" Header="_Empty Trash" BorderThickness="0" Click="EmptyTrash">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/trashempty.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="TItem2" Header="_Rescue All" BorderThickness="0" Click="RescueAll">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/rescueme.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="TItem3" Header="_Reload TrashBacket" BorderThickness="0" Click="TrashBacketReload_Wanted">
+                    <MenuItem.Icon>
+                        <Image Source="SystemSources/DesktopImages/refresh.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <WrapPanel x:Name="trashPanel" Grid.Row="1" Orientation="Horizontal" Background="LightGray" />
+    </Grid>
+</Window>
